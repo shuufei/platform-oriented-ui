@@ -9,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.BadgeDefaults.containerColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,6 +29,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
 //                        Card(title = "title", description = "descritpion", cardLabel = "click")
+                        Badges()
                         FloatingActionButtons()
                         Buttons()
                     }
@@ -138,5 +141,50 @@ fun FloatingActionButtons() {
 fun FloatingActionButtonsPreview() {
     AppThemeM3 {
         FloatingActionButtons()
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Badges() {
+    Column(modifier = Modifier.padding(12.dp)) {
+        Badge(
+            containerColor = BadgeDefaults.containerColor,
+            contentColor = contentColorFor(backgroundColor = containerColor)
+        )
+        Badge(
+            containerColor = BadgeDefaults.containerColor,
+            contentColor = contentColorFor(backgroundColor = containerColor)
+        ) {
+            Text(text = "100")
+        }
+
+        BadgedBox(
+            badge = {
+                Badge()
+            }
+        ) {
+            Text(text = "box item")
+        }
+
+        BadgedBox(
+            badge = {
+                Badge {
+                    Text(text = "1")
+                }
+            }
+        ) {
+            Text(text = "box item")
+        }
+    }
+}
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun BadgesPreview() {
+    AppThemeM3 {
+        Badges()
     }
 }
