@@ -1,12 +1,8 @@
 package com.example.materialdesign3sandbox
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
+import android.graphics.Outline
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,6 +29,24 @@ fun Cards() {
             elevation = CardDefaults.cardElevation(defaultElevation = 12.dp)
         ) {
             Text(text = "Boarder Card")
+        }
+        Card(
+            onClick = {},
+            modifier = Modifier
+                .size(width = 240.dp, height = 100.dp)
+        ) {
+            Column(modifier = Modifier.padding(12.dp)) {
+                Text(text = "Clickable")
+                Divider()
+                Row(modifier = Modifier.padding(4.dp)) {
+                    OutlinedButton(onClick = { /*TODO*/ }) {
+                        Text(text = "Cancel", style = MaterialTheme.typography.labelSmall)
+                    }
+                    Button(onClick = { /*TODO*/ }) {
+                        Text(text = "Get tickets", style = MaterialTheme.typography.labelSmall)
+                    }
+                }
+            }
         }
     }
 }
