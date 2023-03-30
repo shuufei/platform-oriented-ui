@@ -33,10 +33,11 @@ class MainActivity : ComponentActivity() {
                         .verticalScroll(rememberScrollState())
                 ) {
 //                        Card(title = "title", description = "descritpion", cardLabel = "click")
-                        Indicators()
-                        Badges()
-                        FloatingActionButtons()
-                        Buttons()
+                    Cards()
+                    Indicators()
+                    Badges()
+                    FloatingActionButtons()
+                    Buttons()
                 }
             }
         }
