@@ -1,38 +1,42 @@
 package com.example.materialdesign3sandbox
 
 import android.os.Bundle
-import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.BadgeDefaults.containerColor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.materialdesign3sandbox.card.Card
 import com.example.materialdesign3sandbox.ui.theme.AppThemeM3
-import com.example.materialdesign3sandbox.ui.theme.MaterialDesign3SandboxTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AppThemeM3 {
-                Surface(
-                    color = MaterialTheme.colorScheme.surface
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
                 ) {
-                    Column {
 //                        Card(title = "title", description = "descritpion", cardLabel = "click")
+                        Indicators()
                         Badges()
                         FloatingActionButtons()
                         Buttons()
-                    }
                 }
             }
         }
@@ -188,3 +192,30 @@ fun BadgesPreview() {
         Badges()
     }
 }
+
+@Composable
+fun Indicators() {
+    Column(modifier = Modifier.padding(12.dp)) {
+        CircularProgressIndicator()
+        CircularProgressIndicator(
+            color = MaterialTheme.colorScheme.tertiary
+        )
+        val progress: kotlin.Float = 0.7F
+        CircularProgressIndicator(
+            progress = progress
+        )
+        LinearProgressIndicator()
+        LinearProgressIndicator(
+            progress = progress
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun IndicatorsPreview() {
+    AppThemeM3 {
+        Indicators()
+    }
+}
+
