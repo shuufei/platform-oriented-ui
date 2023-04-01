@@ -19,6 +19,8 @@ class MainActivity : ComponentActivity() {
                         .verticalScroll(rememberScrollState())
                 ) {
 //                        Card(title = "title", description = "descritpion", cardLabel = "click")
+                    NavigationBars()
+                    BottomAppBars()
                     ListItems()
                     AlertDialogs()
                     Cards()
