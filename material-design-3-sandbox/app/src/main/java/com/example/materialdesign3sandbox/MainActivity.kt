@@ -19,6 +19,9 @@ class MainActivity : ComponentActivity() {
                         .verticalScroll(rememberScrollState())
                 ) {
 //                        Card(title = "title", description = "descritpion", cardLabel = "click")
+                    Switches()
+                    Sliders()
+                    RadioButtons()
                     Menus()
                     Chips()
                     Checkboxs()
